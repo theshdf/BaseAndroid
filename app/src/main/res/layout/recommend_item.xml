@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/h_lunch_height"
+              android:background="#ffffff"
+
+    >
+<LinearLayout
+    android:id="@+id/ll_rem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <ImageView
+        android:id="@+id/iv_flag_rem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/ic_launcher"
+        android:layout_marginTop="@dimen/h_center_zx_margin"
+        android:layout_marginLeft="@dimen/h_center_zx_margin"
+        />
+    <TextView
+        android:id="@+id/tv_rem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="今日午餐"
+        android:textSize="@dimen/h_txt_size"
+        android:layout_marginLeft="@dimen/h_center_zx_left"
+        android:layout_marginTop="@dimen/h_cente_zx_top"
+        />
+</LinearLayout>
+    <ImageView
+        android:id="@+id/iv_rem"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_below="@id/ll_rem"
+        android:layout_marginTop="@dimen/h_lunch_bottom"
+        android:layout_marginLeft="@dimen/h_lunch_margin"
+        android:layout_marginRight="@dimen/h_lunch_margin"
+        android:layout_centerHorizontal="true"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@id/iv_rem"
+        android:background="#f1f1f1"
+        android:layout_marginTop="@dimen/h_banner_margin_top"
+        />
+</RelativeLayout>
