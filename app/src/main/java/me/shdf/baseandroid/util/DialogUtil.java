@@ -30,16 +30,19 @@ public class DialogUtil {
      * @param cancle
      */
     public static void createDialog(final Context context,String title,String message,String confirm,String cancle){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        final OnClickDialog click = (OnClickDialog)context;
         builder.setTitle(title).setMessage(message).setPositiveButton(confirm, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 T.show(context,"确定",1);
+                click.onConfim();
             }
         }).setNegativeButton(cancle, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 T.show(context,"取消",1);
+
 
             }
         });
@@ -95,6 +98,8 @@ public class DialogUtil {
                 })
                 .create()
                 .show();
-
+    }
+    public interface OnClickDialog{
+        void onConfim();
     }
 }

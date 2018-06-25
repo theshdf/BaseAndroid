@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import me.shdf.baseandroid.App.AppApplication;
+import me.shdf.baseandroid.app.AppApplication;
 
 /**
  * 网络工具类

@@ -10,9 +10,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import me.shdf.baseandroid.App.AppApplication;
+import me.shdf.baseandroid.app.AppApplication;
 import me.shdf.baseandroid.util.NetUtil;
-import me.shdf.baseandroid.util.ViewUtil;
 
 /**
  * Created by shdf on 2018/5/31.
@@ -37,7 +36,7 @@ public class RxSchedulers {
                                 }
                                 else{
                                     //todo 显示dialog
-                                   ViewUtil.getDialogInstance(AppApplication.getmActivity()).show();
+                                //   ViewUtil.getDialogInstance(AppApplication.getmActivity()).show();
                                 }
                             }
                         })
@@ -46,7 +45,7 @@ public class RxSchedulers {
                         .doOnComplete(new Action() {
                             @Override
                             public void run() throws Exception {
-                                ViewUtil.getDialogInstance(AppApplication.getmActivity()).hide();
+                              //  ViewUtil.getDialogInstance(AppApplication.getmActivity()).hide();
                             }
                         });
             }

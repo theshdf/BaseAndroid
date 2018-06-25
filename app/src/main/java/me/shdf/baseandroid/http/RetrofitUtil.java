@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 
-import me.shdf.baseandroid.App.AppApplication;
+import me.shdf.baseandroid.app.AppApplication;
 import me.shdf.baseandroid.api.ApiConstants;
 import me.shdf.baseandroid.api.ApiService;
 import me.shdf.baseandroid.util.NetUtil;

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="me.shdf.baseandroid">
+          package="me.shdf.baseandroid"
+          android:versionCode="1"
+          android:versionName="1"
+    >
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -12,8 +15,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".App.AppApplication"
+        android:name=".app.AppApplication"
         android:theme="@style/AppTheme">
+        <provider
+            android:authorities="me.shdf.baseandroid.fileProvider"
+            android:name="android.support.v4.content.FileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false"
+            >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths"
+                />
+        </provider>
         <activity android:name=".ui.main.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -23,6 +37,7 @@
         <activity android:name=".ui.main.activity.TutorialActivity"/>
         <activity android:name=".ui.main.activity.Main2Activity"/>
         <activity android:name=".ui.main.activity.HomeActivity"/>
+        <activity android:name=".ui.main.activity.CrashActivity"/>
     </application>
 
 </manifest>

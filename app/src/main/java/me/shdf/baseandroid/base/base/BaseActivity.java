@@ -7,8 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
-
-import me.shdf.lib.R;
+import me.shdf.baseandroid.R;
 import me.shdf.lib.util.ActivityControlUtil;
 import me.shdf.lib.util.StatusBarCompat;
 

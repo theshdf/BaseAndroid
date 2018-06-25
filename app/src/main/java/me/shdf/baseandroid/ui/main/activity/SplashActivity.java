@@ -11,7 +11,6 @@ import me.shdf.baseandroid.base.base.BaseActivity;
 import me.shdf.baseandroid.util.SPUtils;
 
 
-
 public class SplashActivity extends BaseActivity {
 
     private Handler handler = new Handler() {
@@ -71,6 +70,12 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+
+    }
+
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 }

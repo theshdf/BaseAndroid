@@ -120,19 +120,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initData() {
-//        RetrofitUtil.getApiService().getDouNews(0, 2).enqueue(new Callback<DouBean>() {
-//            @Override
-//            public void onResponse(Call<DouBean> call, Response<DouBean> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<DouBean> call, Throwable t) {
-//                Log.d("random", "fail");
-//            }
-//        });
-        //对数据库的操作
-        //
     }
 
     @Override
@@ -191,8 +178,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                     mManager.beginTransaction().hide(mSecondFragment).hide(mMainFragment).show(mThirdFragment).commit();
                 }
                 break;
-//            case R.id.button_four:
-//                break;
         }
     }
 

@@ -4,6 +4,7 @@ import io.reactivex.Observable;
 import me.shdf.baseandroid.base.basebean.BaseResponse;
 import me.shdf.baseandroid.bean.CityBean;
 import me.shdf.baseandroid.bean.DouBean;
+import me.shdf.baseandroid.bean.UpdateAppBean;
 import me.shdf.baseandroid.bean.UserBean;
 import me.shdf.baseandroid.bean.WeatherBean;
 import me.shdf.baseandroid.bean.ZhihuBean;
@@ -41,5 +42,8 @@ public interface ApiService {
             @Field("educationType") int educationType);
     @GET("/login/zcma")
     Observable<BaseResponse<UserBean>> getUserMessage();
+    //todo 版本更新
+    @GET("/login/version")
+    Observable<BaseResponse<UpdateAppBean>> getAppVersion();
 
 }
