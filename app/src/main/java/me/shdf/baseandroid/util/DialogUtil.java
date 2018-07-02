@@ -36,12 +36,12 @@ public class DialogUtil {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 T.show(context,"确定",1);
-                click.onConfim();
+              //  click.onConfim();
             }
         }).setNegativeButton(cancle, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                T.show(context,"取消",1);
+              //  T.show(context,"取消",1);
 
 
             }

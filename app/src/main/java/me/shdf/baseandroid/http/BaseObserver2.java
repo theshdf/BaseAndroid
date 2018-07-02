@@ -13,7 +13,6 @@ import java.net.UnknownHostException;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import me.shdf.baseandroid.app.AppApplication;
-import me.shdf.baseandroid.base.basebean.BaseResponse;
 
 /**
  * Created by shdf on 2018/5/31.
@@ -22,12 +21,12 @@ import me.shdf.baseandroid.base.basebean.BaseResponse;
  * 1。 封装一个加载动画
  * 2。 生命周期的管理
  **/
-public abstract class BaseObserver<T> implements Observer<BaseResponse<T>> {
+public abstract class BaseObserver2<T> implements Observer<T> {
 
     private static final String TAG = "BaseObserver";
     private Context mContext;
 
-   protected BaseObserver() {
+   protected BaseObserver2() {
         this.mContext = AppApplication.getContext();
     }
 
@@ -38,13 +37,14 @@ public abstract class BaseObserver<T> implements Observer<BaseResponse<T>> {
 
     //todo 正常请求到数据之后的问题
     @Override
-    public void onNext(BaseResponse<T> value) {
-        if (value.isSuccess()) {
+    public void onNext(T value) {
+        /*f (value.isSuccess()) {
             T t = value.getData();
             onHandleSuccess(t);
         } else {
             onHandleError(value.getRetmsg());
-        }
+        }*/
+        onHandleSuccess(value);
     }
 
     //todo 在请求的过程中出现问题

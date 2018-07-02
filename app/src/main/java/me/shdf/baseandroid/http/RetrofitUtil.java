@@ -111,7 +111,7 @@ public class RetrofitUtil {
                 if (apiService == null) {
                     apiService = new Retrofit
                             .Builder()
-                            .baseUrl(ApiConstants.PYTHON)
+                            .baseUrl(ApiConstants.TIANYUJIA)
                             .client(httpClient)
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create())

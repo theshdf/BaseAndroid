@@ -7,4 +7,5 @@ package me.shdf.baseandroid.app;
  **/
 
 public class AppConstant {
+
 }

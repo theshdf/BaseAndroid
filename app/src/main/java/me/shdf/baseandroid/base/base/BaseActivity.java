@@ -7,6 +7,8 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+
+import butterknife.ButterKnife;
 import me.shdf.baseandroid.R;
 import me.shdf.lib.util.ActivityControlUtil;
 import me.shdf.lib.util.StatusBarCompat;
@@ -31,7 +33,8 @@ public abstract  class BaseActivity extends RxAppCompatActivity {
         setContentView(getLayoutId());
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 //            setTranslucentStatus(true);
-//        }
+//
+        ButterKnife.bind(this);
         ActivityControlUtil.addActivity(this);
         obtainIntent();
         initView(savedInstanceState);
@@ -58,6 +61,7 @@ public abstract  class BaseActivity extends RxAppCompatActivity {
         super.onDestroy();
         //退出activity
         ActivityControlUtil.removeActivity(this);
+
     }
     private void setTranslucentStatus(boolean on) {
         Window win = getWindow();

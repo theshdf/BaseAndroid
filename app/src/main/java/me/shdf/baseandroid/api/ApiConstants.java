@@ -11,5 +11,6 @@ public class ApiConstants {
     public static String  URL_zhihu = "http://news-at.zhihu.com/";
     public static String  DOU_URL= "https://api.douban.com/";
     public static String PYTHON = "http://172.20.10.2:5000/";
+    public static String TIANYUJIA = "http://192.168.253.2:8080/tianyujiat/";
     //public static String PYTHON = "http://192.168.1.101:5000/";
 }

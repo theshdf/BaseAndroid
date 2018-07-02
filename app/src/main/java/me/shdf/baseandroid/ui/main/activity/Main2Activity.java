@@ -9,6 +9,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,25 +22,31 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import kr.co.namee.permissiongen.PermissionGen;
 import me.shdf.baseandroid.BuildConfig;
 import me.shdf.baseandroid.R;
 import me.shdf.baseandroid.base.base.BaseActivity;
-import me.shdf.baseandroid.base.basebean.BaseResponse;
-import me.shdf.baseandroid.bean.UpdateAppBean;
-import me.shdf.baseandroid.bean.UserBean;
+import me.shdf.baseandroid.base.rvbaseAdapter.CommonAdapter;
+import me.shdf.baseandroid.base.rvbaseAdapter.base.ViewHolder;
+import me.shdf.baseandroid.bean.LoginBean;
+import me.shdf.baseandroid.bean.TyjUserBean;
 import me.shdf.baseandroid.db.DbManger;
 import me.shdf.baseandroid.db.User;
-import me.shdf.baseandroid.http.BaseObserver;
+import me.shdf.baseandroid.http.BaseObserver2;
 import me.shdf.baseandroid.http.RetrofitUtil;
 import me.shdf.baseandroid.http.RxSchedulers;
 import me.shdf.baseandroid.util.DialogUtil;
-import me.shdf.baseandroid.util.T;
 
 public class Main2Activity extends BaseActivity implements DialogUtil.OnClickDialog{
+    @BindView(R.id.rv)
+    RecyclerView mRecyclerView;
     TextView name;
+    List<TyjUserBean> datas;
+    private CommonAdapter<TyjUserBean> mAdapter;
     @Override
     protected void beforeView() {
 
@@ -52,21 +62,57 @@ public class Main2Activity extends BaseActivity implements DialogUtil.OnClickDia
 
     @Override
     protected void initView(Bundle saveInstanceState) {
-        name = findViewById(R.id.tv_name);
-        RetrofitUtil.getApiService().getUserMessage()
-                .compose(RxSchedulers.<BaseResponse<UserBean>>compose())
-                .compose(this.<BaseResponse<UserBean>>bindToLifecycle())
-                .subscribe(new BaseObserver<UserBean>() {
+        datas = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            TyjUserBean bean = new TyjUserBean();
+            bean.setUid("uid"+i);
+            bean.setUname("uname"+i);
+            bean.setSid("sid"+i);
+            bean.setSname("sname"+i);
+            bean.setBid("bid"+i);
+            bean.setBname("bname"+i);
+            datas.add(bean);
+        }
+        mAdapter = new CommonAdapter<TyjUserBean>(this,R.layout.user_iterm,datas) {
+            @Override
+            protected void convert(ViewHolder holder, TyjUserBean tyjUserBean, int position) {
+                TextView uname = holder.getView(R.id.uname);
+                TextView sname = holder.getView(R.id.sname);
+
+                TextView bname = holder.getView(R.id.bname);
+
+                uname.setText(tyjUserBean.getUname());
+
+                sname.setText(tyjUserBean.getSname());
+
+                bname.setText(tyjUserBean.getBname());
+
+            }
+        };
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(
+                this,
+                LinearLayoutManager.VERTICAL,
+                false));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(mAdapter);
+
+        RetrofitUtil.getApiService().loginUser("zcm","123")
+                .compose(RxSchedulers.<LoginBean>compose())
+                .compose(this.<LoginBean>bindToLifecycle())
+                .subscribe(new BaseObserver2<LoginBean>() {
                     @Override
-                    protected void onHandleSuccess(UserBean userBean) {
-                        String title = userBean.getName();
-                        name.setText(title);
+                    protected void onHandleSuccess(LoginBean userBean) {
+                        //String title = userBean.getName();
+                        if(userBean != null){
+
+                        }
                     }
                     @Override
                     protected void onHandleError(String msg) {
-
+                        Log.d("TAG",msg);
                     }
                 });
+
         User u = new User();
         u.setAge(10);
         u.setName("zcm");
@@ -85,7 +131,7 @@ public class Main2Activity extends BaseActivity implements DialogUtil.OnClickDia
     @Override
     protected void initData() {
         //todo 判断版本号
-        final int localVersionCode = getVersionCode();
+        /*final int localVersionCode = getVersionCode();
         RetrofitUtil
                 .getApiService()
                 .getAppVersion()
@@ -112,7 +158,7 @@ public class Main2Activity extends BaseActivity implements DialogUtil.OnClickDia
                     protected void onHandleError(String msg) {
 
                     }
-                });
+                });*/
     }
     public int getVersionCode() {
         PackageManager pm = getPackageManager();

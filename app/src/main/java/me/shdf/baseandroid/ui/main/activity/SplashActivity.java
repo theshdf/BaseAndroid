@@ -23,7 +23,7 @@ public class SplashActivity extends BaseActivity {
                     SPUtils.put(SplashActivity.this, "FirstEnter", false);
                 }
                 else {
-                    Intent intent = new Intent(SplashActivity.this, Main2Activity.class);
+                    Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
                     startActivity(intent);
                 }
                 finish();
